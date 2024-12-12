@@ -1,0 +1,167 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .zhd-social-sticky-bar {
+    position: fixed;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 99;
+  }
+  .zhd-social-sticky-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+  }
+  .zhd-social-sticky-bar a:hover {
+    background-color: #000 !important;
+  }
+  .content {
+    margin-left: 75px;
+    font-size: 30px;
+  }
+</style>
+
+<div class="zhd-social-sticky-bar">
+  <a style="background: {{ section.settings.icon1_bg }};color: {{ section.settings.icon1_color }};" href="{{ section.settings.icon1_link }}" class="icon-1"><i class="fa {{ section.settings.icon_1 }}"></i></a> 
+  <a style="background: {{ section.settings.icon2_bg }};color: {{ section.settings.icon2_color }};" href="{{ section.settings.icon2_link }}" class="icon-2"><i class="fa {{ section.settings.icon_2 }}"></i></a> 
+  <a style="background: {{ section.settings.icon3_bg }};color: {{ section.settings.icon3_color }};" href="{{ section.settings.icon3_link }}" class="icon-3"><i class="fa {{ section.settings.icon_3 }}"></i></a> 
+  <a style="background: {{ section.settings.icon4_bg }};color: {{ section.settings.icon4_color }};" href="{{ section.settings.icon4_link }}" class="icon-4"><i class="fa {{ section.settings.icon_4 }}"></i></a>
+  <a style="background: {{ section.settings.icon5_bg }};color: {{ section.settings.icon5_color }};" href="{{ section.settings.icon5_link }}" class="icon-5"><i class="fa {{ section.settings.icon_5 }}"></i></a> 
+</div>
+
+
+{% schema %}
+{
+  "name": "ZHD Sticky Social Bar",
+  "class": "zhd__preloader",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "fa-facebook"
+    },
+    {
+      "type": "url",
+      "id": "icon1_link",
+      "label": "Icon 1 Link"
+    },
+    {
+      "type": "color",
+      "id": "icon1_color",
+      "label": "Icon 1 color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "icon1_bg",
+      "label": "Icon 1 BG",
+      "default": "#3B5998"
+    },
+    {
+      "type": "text",
+      "id": "icon_2",
+      "label": "Icon 2",
+      "default": "fa-twitter"
+    },
+    {
+      "type": "url",
+      "id": "icon2_link",
+      "label": "Icon 2 Link"
+    },
+    {
+      "type": "color",
+      "id": "icon2_color",
+      "label": "Icon 2 color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "icon2_bg",
+      "label": "Icon 2 BG",
+      "default": "#55ACEE"
+    },
+    {
+      "type": "text",
+      "id": "icon_3",
+      "label": "Icon 3",
+      "default": "fa-google"
+    },
+    {
+      "type": "url",
+      "id": "icon3_link",
+      "label": "Icon 3 Link"
+    },
+    {
+      "type": "color",
+      "id": "icon3_color",
+      "label": "Icon 3 color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "icon3_bg",
+      "label": "Icon 3 BG",
+      "default": "#55ACEE"
+    },
+    {
+      "type": "text",
+      "id": "icon_4",
+      "label": "Icon 4",
+      "default": "fa-linkedin"
+    },
+    {
+      "type": "url",
+      "id": "icon4_link",
+      "label": "Icon 4 Link"
+    },
+    {
+      "type": "color",
+      "id": "icon4_color",
+      "label": "Icon 4 color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "icon4_bg",
+      "label": "Icon 4 BG",
+      "default": "#007bb5"
+    },
+    {
+      "type": "text",
+      "id": "icon_5",
+      "label": "Icon 5",
+      "default": "fa-youtube"
+    },
+    {
+      "type": "url",
+      "id": "icon5_link",
+      "label": "Icon 5 Link"
+    },
+    {
+      "type": "color",
+      "id": "icon5_color",
+      "label": "Icon 5 color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "icon5_bg",
+      "label": "Icon 5 BG",
+      "default": "#bb0000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Sticky Social Bar"
+    }
+  ]
+}
+{% endschema %}
+
+

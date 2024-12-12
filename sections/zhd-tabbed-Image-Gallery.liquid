@@ -1,0 +1,134 @@
+
+<style>
+.zhd-tabbed-image-gallery {
+    padding: 3% 10%;
+}
+/* The grid: Four equal columns that floats next to each other */
+.zhd-tabbed-image-gallery .column {
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.zhd-tabbed-image-gallery .column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.zhd-tabbed-image-gallery .column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.zhd-tabbed-image-gallery .container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
+
+<div class="zhd-tabbed-image-gallery">
+  <div class="row">
+    <div class="column">
+      <img src="{{ section.settings.tab_img1  | img_url: 'master' }}" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="{{ section.settings.tab_img2  | img_url: 'master' }}" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="{{ section.settings.tab_img3  | img_url: 'master' }}" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="{{ section.settings.tab_img4  | img_url: 'master' }}" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="{{ section.settings.tab_img5  | img_url: 'master' }}" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+</div>
+
+
+<script>
+  function myFunction(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+    var imgText = document.getElementById("imgtext");
+    expandImg.src = imgs.src;
+    imgText.innerHTML = imgs.alt;
+    expandImg.parentElement.style.display = "block";
+  }
+</script>
+
+
+
+{% schema %}
+{
+  "name": "ZHD Tabbed Image Gallery",
+  "class": "zhd__preloader",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "tab_img1",
+      "label": "Tab Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_img2",
+      "label": "Tab Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_img3",
+      "label": "Tab Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_img4",
+      "label": "Tab Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_img5",
+      "label": "Tab Image 5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Tabbed Image Gallery"
+    }
+  ]
+}
+{% endschema %}
+
+
+

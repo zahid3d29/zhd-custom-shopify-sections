@@ -1,0 +1,194 @@
+
+
+{% style %}
+  .zhd__icon-bar .icon-bar {
+      {%- case section.settings.icon_bar_size -%}
+      {%- when 'standard' -%}
+        width: 65px;
+      {%- when 'large' -%}
+        width: 90px;
+      {%- endcase -%}
+      background-color: {{  section.settings.bg_color  }};
+      position: fixed;
+      top: 30%;
+      right: 0;
+      z-index: 5;
+  }
+  .zhd__icon-bar span.drag-me {
+      display: none;
+      {%- case section.settings.icon_bar_size -%}
+      {%- when 'standard' -%}
+        font-size: 12px;
+      {%- when 'large' -%}
+        font-size: 16px;
+      {%- endcase -%}
+      height: 40px;
+      width: 100%;
+      padding: 5px;
+      color: #fff;
+      background: black;
+      text-align: center;
+      cursor: move;
+  }
+  {% if section.settings.enable_draggable_mode %}
+      .zhd__icon-bar .icon-bar:hover span.drag-me { display: block;}
+  {% endif %}
+  .zhd__icon-bar .icon-bar a {
+      display: block;
+      text-align: center;
+      padding: 16px;
+      transition: all 0.3s ease;
+      color: {{  section.settings.icon_color  }};
+      {%- case section.settings.icon_bar_size -%}
+      {%- when 'standard' -%}
+        font-size: 20px;
+      {%- when 'large' -%}
+        font-size: 36px;
+      {%- endcase -%}
+  }
+  .zhd__icon-bar .icon-bar a:hover {
+      background-color: {{  section.settings.hover_color  }};
+  }
+  .zhd__icon-bar .icon-active {
+      background-color: {{  section.settings.active_color  }};
+  }
+  @media only screen and ( max-width: 767px ){
+    .zhd__icon-bar .icon-bar {
+      width: 65px;
+    }
+    .zhd__icon-bar span.drag-me {
+      font-size: 12px;
+    }
+    .zhd__icon-bar .icon-bar a {
+      font-size: 20px;
+    }
+  }
+
+{% endstyle %}
+
+<div class="zhd__icon-bar">
+  <div class="icon-bar" {% if section.settings.enable_draggable_mode %}id="draggable"{% endif %}>
+    <span class="drag-me">Drag Me</span>
+    {% for block in section.blocks %}
+      <a href="{{  block.settings.icon_link  }}"><i class="fa {{  block.settings.icon_code  }}"></i></a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZHD Icon Bar",
+  "max_blocks": 5,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "class": "zhd__icon-bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_draggable_mode",
+      "default": false,
+      "label": "Draggable Bar?"
+    },
+    {
+      "type": "select",
+      "id": "icon_bar_size",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "standard",
+      "label": "Bar Size"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#555"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "active_color",
+      "label": "Active Color",
+      "default": "#00BCD4"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Hover Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_code",
+          "default": "fa-home",
+          "label": "Icon code"
+        },
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Icon Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "icon_active",
+          "label": "Icon Active?"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Icon Bar",
+      "blocks": [
+        {
+          "type": "icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% comment %}
+{% if block.settings.icon_active %}class="icon-active"{% endif %}
+e.preventDefault(); // Prevent the default link behavior
+{% endcomment %}
+
+  
+{% javascript %}
+
+  $( function() {
+    $( "#draggable" ).draggable();
+    $( "a", "i" ).disableSelection();
+  });
+
+  // Link active color adding
+  $(document).ready(function() {
+      $('.zhd__icon-bar .icon-bar a').each(function() {
+          if (window.location.pathname === $(this).attr('href')) {
+              $(this).addClass('icon-active'); // Add the class to the link with a matching URL
+          }
+      });
+  });
+
+{% endjavascript %}
+     

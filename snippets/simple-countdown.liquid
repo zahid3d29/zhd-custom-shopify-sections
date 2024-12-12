@@ -1,0 +1,144 @@
+<style>
+  .zhd-simple-countdown .alert-bar {
+      color: #fff;
+      padding: 10px 15px;
+  } 
+
+  .zhd-simple-countdown .timer-block{
+      color: #fff;
+      font-weight: 900;
+      display: inline-block;
+      float: right;
+      padding-right: 40px;
+  }
+  .zhd-simple-countdown span.main-text {
+      display: inline-block;
+      text-align: left;
+      padding-left: 30px;
+  }
+  .zhd-simple-countdown .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+  .zhd-simple-countdown .closebtn:hover {
+      color: black;
+  }
+
+  @media only screen and ( max-width: 425px ){
+    .zhd-simple-countdown span.main-text {
+        display: block;
+        text-align: center;
+        padding-left: 10px;
+    }
+    .zhd-simple-countdown .timer-block{
+        color: #000;
+        font-weight: 900;
+        display: block;
+        float: none;
+        text-align: center;
+        padding-right: 10px;
+        margin-top: 10px;
+    }
+  }
+
+</style>
+
+{%- for block in section.blocks -%}
+  {%- if block.settings.main_text != blank -%}
+
+  <style>
+      {%- if block.settings.sticky_enable != false -%}
+        .zhd-simple-countdown .alert-bar-sticky {
+          position: fixed;
+          top:  {{ block.settings.countdoownbar_position }}%;
+          width: 100%;
+          z-index: 11;
+        }
+        @media only screen and ( max-width: 425px ){
+          .zhd-simple-countdown .alert-bar-sticky {
+            top: {{ block.settings.countdoownbar_position_mobile }}%;
+          }
+        }
+      {%- endif -%}
+  </style>
+  <div class="zhd-simple-countdown">
+    <div class="alert-bar" id="alert-bar" style="background: {{ block.settings.color_bar_bg }};">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      {%- if block.settings.main_text != blank -%}
+      <span class="main-text" style="color: {{ block.settings.color_bar_text }};">{{ block.settings.main_text }}</span>
+      {%- endif -%}
+      <span id="timer-block" class="timer-block" style="color: {{ block.settings.color_bar_text }};"> </span>
+    </div>
+  </div>
+  {%- endif -%}
+
+
+  {%- assign timer_text =  block.settings.timer -%}
+  {%- assign date_text =   block.settings.custom_date -%}
+  {%- assign timer_end =   block.settings.timer_end_text -%}
+  {%- assign date_show_text =   block.settings.days_show_text -%}
+
+
+{%- endfor -%}
+
+
+<script> 
+  window.addEventListener('scroll', myFunction2);
+  
+  var header2 = document.getElementById("alert-bar");
+  var sticky2 = header2.offsetTop;
+
+  function myFunction2() {
+    if (window.pageYOffset > sticky2) {
+      header2.classList.add("alert-bar-sticky");
+    } else {
+      header2.classList.remove("alert-bar-sticky");
+    }
+  }
+</script>
+
+<script> 
+
+    // Set the date we're counting down to
+    var timeEndText = `{{ timer_end }}`;
+    var timeCustom = `{{ date_text }} {{ timer_text }}`;
+  
+    var dateShowText = `{{ date_show_text }}`;
+    var countDownDate = new Date( timeCustom  ).getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="timer-block"
+    if( dateShowText == 'yes' ){
+        document.getElementById("timer-block").innerHTML = days + "D, " + hours + "H, " + minutes + "M, " + seconds + "S ";
+    } else{
+        document.getElementById("timer-block").innerHTML = hours + "H, " + minutes + "M, " + seconds + "S ";
+    }
+
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("timer-block").innerHTML = timeEndText;
+    }
+  }, 1000);
+  
+</script>

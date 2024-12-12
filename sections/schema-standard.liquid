@@ -1,0 +1,81 @@
+
+<div class="zhd-offer-modal">
+  <a id="myBtn" href="#" class="float">
+    <img src="{{ section.settings.btn_img  | img_url: 'master' }}" alt="floating-button" style="width:62px">
+  </a>
+  <div id="myModal" class="zhd-offer-modal">
+    <div class="zhd-offer-card">
+      <span class="close">&times;</span>
+      <a href="{{ section.settings.modal_link }}" target="_blank">
+        <img src="{{ section.settings.modal_img  | img_url: 'master' }}" alt="Avatar" style="width:100%">
+      </a>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "ZHD Offer Modal",
+  "class": "zhd__preloader",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "modal_img",
+      "label": "MOdal Image"
+    },
+    {
+      "type": "url",
+      "id": "modal_link",
+      "label": "MOdal Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "btn_img",
+      "label": "Button Image"
+    },
+        {
+      "type": "checkbox",
+      "id": "enable_draggable_mode",
+      "default": false,
+      "label": "Draggable Bar?"
+    },
+    {
+      "type": "select",
+      "id": "icon_bar_size",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "standard",
+      "label": "Bar Size"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#555"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Offer Modal"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

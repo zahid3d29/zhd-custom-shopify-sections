@@ -1,0 +1,233 @@
+
+
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+      {%- when 'countdown-hourly' -%}
+          {%- render "countdown-hourly" -%}
+      {%- when 'countdown-timer' -%}
+          {%- render "simple-countdown" -%}
+      {% when 'fancy-countdown' %}
+          {% render "fancy-countdown" %}
+  {%- endcase -%}
+{%- endfor -%}
+  
+  
+  
+  {% schema %}
+    {
+      "name": "ZHD Top bar",
+      "settings": [
+            {
+              "type": "color",
+              "id": "ct_bg",
+              "label": "Background",
+              "default": "#e91e63"
+            },
+            {
+              "type": "color",
+              "id": "ct_content_color",
+              "label": "Content Color",
+              "default": "#fff"
+            }
+      ],
+      "blocks": [
+        {
+          "type": "countdown-timer",
+          "name": "Countdown Bar",
+          "limit": 1,
+          "settings": [
+              {
+                "type": "color",
+                "id": "color_bar_bg",
+                "label": "Background color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "color",
+                "id": "color_bar_text",
+                "label": "Text color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "text",
+                "id": "main_text",
+                "default": "Welcome to our store",
+                "label": "Main Text"
+              },
+              {
+                "type": "checkbox",
+                "id": "sticky_enable",
+                "label": "Sticky countdown Bar?",
+                "default": false
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Countdoownbar Sticky Position",
+                "default": 10
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Countdoownbar Sticky Position Mobile",
+                "default": 10
+              },
+              {
+                "type": "text",
+                "id": "days_show_text",
+                "label": "Show Days?",
+                "default": "yes",
+                "info": "write 'yes' to show or 'no' to hide 'Days' on countdown. Only capital letter allowed!"
+              },
+              {
+                "type": "text",
+                "id": "custom_date",
+                "label": "Date",
+                "default": "Mar 23, 2023" 
+  
+              },
+              {
+                "type": "text",
+                "id": "timer",
+                "label": "Timer",
+                "default": "21:45:25"
+              },
+              {
+                "type": "text",
+                "id": "timer_end_text",
+                "label": "Offer end Text",
+                "default": "Expired!"
+              }
+          ]
+        },
+        {
+          "type": "countdown-hourly",
+          "name": "CountDown Hourly",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "ct_msg",
+              "label": "Countdown Message",
+              "default": "Last Chance for Black Friday Sell"
+            },
+            {
+              "type": "text",
+              "id": "ct_hour",
+              "label": "Countdown Hour?",
+              "default": "1 hours"
+            },
+            {
+              "type": "checkbox",
+              "id": "on_off_timer",
+              "label": "Enable/Disable?",
+              "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "rpt_timer",
+              "label": "Repeat Timer?",
+              "default": true
+            }
+          ]
+        },
+        {
+          "type": "fancy-countdown",
+          "name": "fancy-countdown",
+          "limit": 1,
+          "settings": [
+              {
+                "type": "color",
+                "id": "color_bar_bg",
+                "label": "Background color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "color",
+                "id": "color_bar_text",
+                "label": "Text color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "text",
+                "id": "main_text",
+                "default": "Welcome to our store",
+                "label": "Main Text"
+              },
+              {
+                "type": "checkbox",
+                "id": "sticky_enable",
+                "label": "Sticky countdown Bar?",
+                "default": false
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Countdoownbar Sticky Position",
+                "default": 10
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Countdoownbar Sticky Position Mobile",
+                "default": 10
+              },
+              {
+                "type": "text",
+                "id": "days_show_text2",
+                "label": "Show Days?",
+                "default": "yes",
+                "info": "write 'yes' to show or 'no' to hide 'Days' on countdown. Only capital letter allowed!"
+              },
+              {
+                "type": "text",
+                "id": "custom_date",
+                "label": "Date",
+                "default": "Mar 23, 2023" 
+              },
+              {
+                "type": "text",
+                "id": "timer",
+                "label": "Timer",
+                "default": "21:45:25"
+              },
+              {
+                "type": "text",
+                "id": "timer_end_text",
+                "label": "Offer end Text",
+                "default": "Expired!"
+              }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "ZHD Top bar",
+          "category": "ZHD Sections",
+          "blocks": [
+            {
+              "type": "countdown-timer"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+
+

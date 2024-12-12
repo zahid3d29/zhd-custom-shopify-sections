@@ -1,0 +1,28 @@
+{%  comment %}{%- when 'zhd-custom-option' -%}
+
+    <label class="form__label" for="size-select">Select Size</label>
+    <div class="select" id="size-select" >
+       <select required class="select__select required" id="size" name="properties[size]" form="{{ product_form_id }}">
+           <option value="{{ product.metafields.custom.zhd_product_option_xs.value }}">{{ product.metafields.custom.zhd_product_option_xs.value }}</option>
+           <option value="{{ product.metafields.custom.zhd_product_option_s.value }}">{{ product.metafields.custom.zhd_product_option_s.value }}</option>
+           <option value="{{ product.metafields.custom.zhd_product_option_m.value }}">{{ product.metafields.custom.zhd_product_option_m.value }}</option>
+           <option value="{{ product.metafields.custom.zhd_product_option_l.value }}">{{ product.metafields.custom.zhd_product_option_l.value }}</option>
+           <option value="{{ product.metafields.custom.zhd_product_option_xl.value }}">{{ product.metafields.custom.zhd_product_option_xl.value }}</option>
+       </select>
+       {% render 'icon-caret' %}
+    </div>
+
+
+    {% when 'custom_product_size' %}
+      <label class="form__label" for="size-select">Select Custom Size</label>
+      <div class="select" id="size-select">
+         <select required class="select__select required" id="size" name="properties[Custom Size]" form="{{ product_form_id }}">
+             <option value="option value">Option Name</option>
+         </select>
+         {% render 'icon-caret' %}
+      </div>
+
+
+
+{% endcomment %}
+

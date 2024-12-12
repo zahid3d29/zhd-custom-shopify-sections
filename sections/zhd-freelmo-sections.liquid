@@ -1,0 +1,1389 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<div class="zhd-freelmo__page-template">
+
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+    {%- when 'section-1' -%}
+    <style>
+
+    .zhd-freelmo__flex-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 40px 0px;
+    }
+    .zhd-freelmo__section-one .block-1 {
+        display: inline-block;
+        width: 40%;
+        float: none;
+    }
+    .zhd-freelmo__section-one .block-2 {
+        display: block;
+        width: 40%;
+        margin: 0 auto;
+    }
+    .zhd-freelmo__section-one .block-3 {
+        display: block;
+        width: 50%;
+        float: right;
+        clear: both;
+        margin-top: -10rem;
+    }
+    .zhd-freelmo__section-one .block-2 video#video1 {
+        width: 600px;
+        height: 600px;
+        margin-top: -14rem;
+        margin-left: -16rem;
+    }
+    .zhd-freelmo__section-one .block-1 h3,
+    .zhd-freelmo__section-one .block-3 h3 {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin: 0 0 1.5rem;
+    }
+    .zhd-freelmo__section-one .block-1 p,
+    .zhd-freelmo__section-one .block-3 p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+  @media only screen and ( max-width: 1024px ){
+    .zhd-freelmo__flex-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 40px 30px;
+    }
+    .zhd-freelmo__section-one .block-1 {
+        display: inline-block;
+        width: 100%;
+        float: none;
+    }
+    .zhd-freelmo__section-one .block-2 {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .zhd-freelmo__section-one .block-3 {
+        display: block;
+        width: 100%;
+        float: none;
+        clear: both;
+        margin-top: 0rem;
+    }
+    .zhd-freelmo__section-one .block-2 video#video1 {
+        width: 100%;
+        height: 100%;
+        margin-top: 3rem;
+        margin-left: 0rem;
+        margin-bottom: 3rem;
+    }
+    .zhd-freelmo__section-one .block-1 h3,
+    .zhd-freelmo__section-one .block-3 h3 {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin: 0 0 1.5rem;
+    }
+    .zhd-freelmo__section-one .block-1 p,
+    .zhd-freelmo__section-one .block-3 p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+  }
+
+</style>  
+    <section class="zhd-freelmo__section-one">
+        <div class="zhd-freelmo__flex-container">
+            <div class="block-1">
+                <h3>{{ block.settings.freelmo__heading_1 }}</h3>
+                {{ block.settings.freelmo__content_1 }}
+            </div>
+            <div class="block-2">
+                <video id="video1" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                    <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video> 
+            </div>
+            <div class="block-3">
+                <h3>{{ block.settings.freelmo__heading_2 }}</h3>
+                {{ block.settings.freelmo__content_2 }}
+            </div>
+        </div>
+    </section>
+
+    {%- when 'section-2' -%}
+    <style>
+      
+        section.zhd-freelmo__section-two {
+            width: 100%;
+            display: inline-block;
+            margin: 40px 0px;
+        }
+        .zhd-freelmo__section-two .heading-content-block {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 0px;
+        }
+        .zhd-freelmo__section-two span.media-content-grid-heading-big-accent {
+            color: #020405;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+        }
+        .zhd-freelmo__section-two h3.media-content-grid-heading-big {
+            font-size: 70px;
+            font-weight: 700;
+            line-height: 85px;
+            margin-top: 0;
+            margin-bottom: 28px 
+        }
+        .zhd-freelmo__section-two a.button-primary.invert-text-color {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 15px;
+            width: 186px;
+            height: 45px;
+            display: block;
+            text-align: left;
+            float: right;
+        }
+        .zhd-freelmo__section-two .btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 22222px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: block;
+            float: right;
+            margin-right: 2rem;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 1.75rem 2rem;
+            text-transform: none;
+            -webkit-transition: all .3s;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        /* Darker background on mouse-over */
+        .zhd-freelmo__section-two .btn:hover {
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            box-shadow: 2px 2px 16px 4px #00000024;
+        }
+
+      @media only screen and ( max-width: 1024px ){
+        section.zhd-freelmo__section-two {
+            width: 100%;
+            display: inline-block;
+            margin: 0px 0px;
+        }
+        .zhd-freelmo__section-two .heading-content-block {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0px 30px;
+        }
+
+        .zhd-freelmo__section-two span.media-content-grid-heading-big-accent {
+            color: #020405;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+        }
+
+        .zhd-freelmo__section-two h3.media-content-grid-heading-big {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 45px;
+            margin-top: 2rem;
+            margin-bottom: 3rem; 
+        }
+
+        .zhd-freelmo__section-two a.button-primary.invert-text-color {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 15px;
+            width: 100%;
+            height: 45px;
+            display: block;
+            text-align: left;
+            float: none;
+        }
+
+        .zhd-freelmo__section-two .btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 22222px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: block;
+            float: none;
+            margin-right: 0rem;
+            margin-top: 2rem;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 1.75rem 2rem;
+            text-transform: none;
+            -webkit-transition: all .3s;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        /* Darker background on mouse-over */
+        .zhd-freelmo__section-two .btn:hover {
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            box-shadow: 2px 2px 16px 4px #00000024;
+        }
+      }
+    </style>
+
+    <section class="zhd-freelmo__section-two">
+        <div class="heading-content-block">
+            <span class="media-content-grid-heading-big-accent">{{ block.settings.freelmo__subheading }}</span>
+            <h3 class="media-content-grid-heading-big">{{ block.settings.freelmo__heading }}</h3>
+            <div class="btn-wrapper center big-text-section__button-wrapper">
+                <a href="{{ block.settings.freelmo__btn_1_link }}" class="btn"> {{ block.settings.freelmo__btn_1 }} &nbsp;<i class="fa fa-chevron-right"></i></a>
+                <a href="{{ block.settings.freelmo__btn_2_link }}" class="btn"> {{ block.settings.freelmo__btn_2 }} &nbsp;<i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    {%- when 'section-3' -%}
+    <style>
+        .pc{ display: block;}
+        .mob{display: none;}
+        .zhd-freelmo__section-three {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+    
+        .zhd-freelmo__section-three .left-block,
+        .zhd-freelmo__section-three .right-block {
+            float: left;
+            width: 48%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-three .right-block{
+            padding-top: 6em;
+        }
+        .zhd-freelmo__section-three .right-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        /* Clear floats after the columns */
+        .zhd-freelmo__section-three:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .zhd-freelmo__section-three span.media-content-grid-heading-pre {
+            font-size: 18px;
+            font-weight: 200;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+    
+        .zhd-freelmo__section-three h2.media-content-grid-heading-main {
+            font-size: 40px;
+            font-weight: 700;
+            grid-area: heading;
+            line-height: 1.2;
+            margin: 0 0 1.5rem;
+        }
+      @media only screen and ( max-width: 1024px ){
+        .pc{ display: none;}
+        .mob{display: block;}
+        .zhd-freelmo__section-three {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 30px 
+        }
+    
+        .zhd-freelmo__section-three .left-block,
+        .zhd-freelmo__section-three .right-block {
+            float: left;
+            width: 100%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-three .right-block{
+            padding-top: 1em;
+        }
+        .zhd-freelmo__section-three .right-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        /* Clear floats after the columns */
+        .zhd-freelmo__section-three:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .zhd-freelmo__section-three span.media-content-grid-heading-pre {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+    
+        .zhd-freelmo__section-three h2.media-content-grid-heading-main {
+            font-size: 40px;
+            font-weight: 700;
+            grid-area: heading;
+            line-height: 1.2;
+            margin: 0 0 1.5rem;
+        }
+      }
+    </style>
+
+    
+    <section class="zhd-freelmo__section-three">
+        <div class="mob">
+            <span class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</span>
+            <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+            <video id="video2" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+            {{ block.settings.freelmo__content }}
+        </div>
+        <div class="left-block pc">
+            <video id="video2" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+        <div class="right-block pc">
+            <span class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</span>
+            <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+            {{ block.settings.freelmo__content }}
+        </div>
+    </section>
+  
+    {%- when 'section-4' -%}
+      
+    <style>
+        .zhd-freelmo__section-four {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .pc{ display: block;}
+        .mob{display: none;}
+        .zhd-freelmo__section-four .left-block,
+        .zhd-freelmo__section-four .right-block {
+            float: left;
+            width: 48%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-four .left-block{
+            padding-top: 6em;
+        }
+        .zhd-freelmo__section-four .left-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        /* Clear floats after the columns */
+        .zhd-freelmo__section-four:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .zhd-freelmo__section-four span.media-content-grid-heading-pre {
+            font-size: 18px;
+            font-weight: 200;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+    
+        .zhd-freelmo__section-four h2.media-content-grid-heading-main {
+            font-size: 40px;
+            font-weight: 700;
+            grid-area: heading;
+            line-height: 1.2;
+            margin: 0 0 1.5rem;
+        }
+        @media only screen and (max-width: 1024px){
+          .pc{ display: none;}
+          .mob{display: block;}
+          .zhd-freelmo__section-four {
+              max-width: 1024px;
+              margin: 0 auto;
+              padding: 40px 30px;
+          }
+          .zhd-freelmo__section-four .left-block,
+          .zhd-freelmo__section-four .right-block {
+              float: left;
+              width: 108%;
+              padding: 10px;
+          }
+          .zhd-freelmo__section-four .left-block{
+              padding-top: 1em;
+          }
+          .zhd-freelmo__section-four .left-block p{
+              font-size: 18px;
+              line-height: 1.5;
+          }
+          /* Clear floats after the columns */
+          .zhd-freelmo__section-four:after {
+              content: "";
+              display: table;
+              clear: both;
+          }
+          .zhd-freelmo__section-four span.media-content-grid-heading-pre {
+              font-size: 18px;
+              font-weight: 200;
+              line-height: 1.2;
+              margin: 0 0 0.75rem;
+          }
+          .zhd-freelmo__section-four h2.media-content-grid-heading-main {
+              font-size: 40px;
+              font-weight: 700;
+              grid-area: heading;
+              line-height: 1.2;
+              margin: 0 0 1.5rem;
+          }
+        }
+
+    </style>
+
+    <section class="zhd-freelmo__section-four">
+        <div class="left-block pc">
+            <span class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</span>
+            <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+            {{ block.settings.freelmo__content }}
+        </div>
+        <div class="mob">
+          <span class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</span>
+          <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+        </div>
+        <div class="right-block">
+            <video id="video2" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+        <div class="mob">
+          {{ block.settings.freelmo__content }}
+        </div>
+    </section>
+
+    {%- when 'section-5' -%}
+    <style>
+        .zhd-freelmo__section-five {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+    
+        .zhd-freelmo__section-five .left-block,
+        .zhd-freelmo__section-five .right-block {
+            float: left;
+            width: 48%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-five .right-block{
+            padding-top: 2em;
+        }
+        .zhd-freelmo__section-five .right-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        /* Clear floats after the columns */
+        .zhd-freelmo__section-five:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .zhd-freelmo__section-five .media-content-grid-heading-big-accent {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+            display: block;
+            margin-top: 3rem;
+        }
+        .zhd-freelmo__section-five .media-content-grid-heading-big {
+            font-size: 70px;
+            font-weight: 700;
+            line-height: 85px;
+            margin-top: 0;
+        }
+
+      @media only screen and ( max-width: 1024px ){
+        .zhd-freelmo__section-five {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+        .zhd-freelmo__section-five .left-block,
+        .zhd-freelmo__section-five .right-block {
+            float: left;
+            width: 100%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-five .right-block{
+            padding-top: 0em;
+        }
+        .zhd-freelmo__section-five .right-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .zhd-freelmo__section-five .media-content-grid-heading-big-accent {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+            display: block;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+        }
+        .zhd-freelmo__section-five .media-content-grid-heading-big {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 45px;
+            margin-top: 0;
+        }
+      }
+
+    </style>
+
+    <section class="zhd-freelmo__section-five">
+        <div class="left-block">
+            <video id="video2" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+        <div class="right-block">
+            {{ block.settings.freelmo__content }}
+            <span class="media-content-grid-heading-big-accent">{{ block.settings.freelmo__subheading }}</span>
+            <h3 class="media-content-grid-heading-big">{{ block.settings.freelmo__heading }}</h3>
+        </div>
+    </section>
+
+    {%- when 'section-6' -%}
+    <style>
+        .zhd-freelmo__section-six {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .zhd-freelmo__section-six .left-block,
+        .zhd-freelmo__section-six .right-block {
+            float: left;
+            width: 48%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-six .left-block{
+            padding-top: 6em;
+        }
+        .zhd-freelmo__section-six .left-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        /* Clear floats after the columns */
+        .zhd-freelmo__section-six:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .zhd-freelmo__section-six h4.media-content-grid-heading-pre {
+            font-size: 40px;
+            font-weight: 200;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+        .zhd-freelmo__section-six h2.media-content-grid-heading-main {
+            font-size: 40px;
+            font-weight: 700;
+            grid-area: heading;
+            line-height: 1.2;
+            margin: 0 0 1.5rem;
+        }
+      @media only screen and ( max-width: 1024px ){
+        .zhd-freelmo__section-six {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+        .zhd-freelmo__section-six .left-block,
+        .zhd-freelmo__section-six .right-block {
+            float: left;
+            width: 100%;
+            padding: 10px;
+        }
+        .zhd-freelmo__section-six .left-block{
+            padding-top: 0em;
+        }
+        .zhd-freelmo__section-six .left-block p{
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .zhd-freelmo__section-six h4.media-content-grid-heading-pre {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+        .zhd-freelmo__section-six h2.media-content-grid-heading-main {
+            font-size: 40px;
+            font-weight: 700;
+            grid-area: heading;
+            line-height: 1.2;
+            margin: 0 0 1.5rem;
+        }
+      }
+    </style>
+
+
+    <section class="zhd-freelmo__section-six">
+        <div class="left-block pc">
+            <h2 class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</h2>
+            <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+            {{ block.settings.freelmo__content }}
+        </div>
+        <div class="mob">
+          <h2 class="media-content-grid-heading-pre">{{ block.settings.freelmo__subheading }}</h2>
+          <h2 class="media-content-grid-heading-main">{{ block.settings.freelmo__heading }}</h2>
+        </div>
+        <div class="right-block">
+            <video id="video2" width="100%" height="600" autoplay muted poster="{{ block.settings.freelmo__freelmo__video_cover | img_url: 'master' }}">
+                <source src="{{ block.settings.freelmo__video_ulr }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+        <div class="mob">
+           {{ block.settings.freelmo__content }}
+        </div>
+    </section>
+
+    {%- when 'section-7' -%}
+    <style>
+        .zhd-freelmo__section-seven {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .zhd-freelmo__section-seven .left-block {
+            float: left;
+            width: 30%;
+            padding-left: 20px;
+            text-align: right;
+        }
+        .zhd-freelmo__section-seven .right-block {
+            float: left;
+            width: 65%;
+            margin-top: 65px;
+        }
+        .zhd-freelmo__section-seven:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .zhd-freelmo__section-seven .media-content-grid-heading-big-accent {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+            margin-left: -140px;
+        }
+        .zhd-freelmo__section-seven h3.media-content-grid-heading-big {
+            font-size: 70px;
+            font-weight: 700;
+            line-height: 85px;
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-left: -140px;
+        }
+
+        .zhd-freelmo__section-seven .left-block img {
+            background: radial-gradient(at right bottom,#fff,hsla(0,0%,100%,.9),hsla(0,0%,100%,0));
+            opacity: .3;
+        }
+
+        .zhd-freelmo__section-seven .btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-radius: 22222px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: block;
+            float: left;
+            margin-left: 3rem;
+            margin-top: 1rem;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 1.75rem 2rem;
+            text-transform: none;
+            -webkit-transition: all .3s;
+            -o-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+      
+        /* Darker background on mouse-over */
+        .zhd-freelmo__section-seven .btn:hover {
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            box-shadow: 2px 2px 16px 4px #00000024;
+        }
+
+      @media only screen and ( max-width: 1024px ){
+        .zhd-freelmo__section-seven {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+        .zhd-freelmo__section-seven .left-block {
+            float: left;
+            width: 30%;
+            padding-left: 20px;
+            text-align: right;
+        }
+        .zhd-freelmo__section-seven .right-block {
+            float: left;
+            width: 66%;
+            margin-top: 121px;
+        }
+
+        .zhd-freelmo__section-seven .media-content-grid-heading-big-accent {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+            margin-left: -130px;
+        }
+        .zhd-freelmo__section-seven h3.media-content-grid-heading-big {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 45px;
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-left: -130px;
+        }
+
+        .zhd-freelmo__section-seven .left-block img {
+            background: radial-gradient(at right bottom,#fff,hsla(0,0%,100%,.9),hsla(0,0%,100%,0));
+            opacity: .3;
+        }
+
+        .zhd-freelmo__section-seven .btn {
+            float: left;
+            margin-left: -120px;
+            margin-top: 2rem;
+        }
+
+      }
+    </style>
+
+    <style>
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <section class="zhd-freelmo__section-seven">
+        <swiper-container class="mySwiper" space-between="50" history-key="slide" pagination="false" navigation="true">
+
+            {% if block.settings.freelmo__slide1_img %}
+            <swiper-slide data-history="1">
+                <div class="left-block">
+                    <img src="{{ block.settings.freelmo__slide1_img | img_url: '350x350' }}">
+                </div>
+                <div class="right-block">
+                    <span class="media-content-grid-heading-big-accent">{{ block.settings.freelmo__slide1_subheading }}</span>
+                    <h3 class="media-content-grid-heading-big">{{ block.settings.freelmo__slide1_heading }}</h3>
+                    <div class="btn-wrapper center big-text-section__button-wrapper">
+                        <a href="{{ block.settings.freelmo__slide1_btn_1_link }}" class="btn"> {{ block.settings.freelmo__slide1_btn_1 }} &nbsp;<i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </swiper-slide>
+            {% endif %}
+
+            {% if block.settings.freelmo__slide2_img %}
+            <swiper-slide data-history="1">
+                <div class="left-block">
+                    <img src="{{ block.settings.freelmo__slide2_img  | img_url: '350x350' }}">
+                </div>
+                <div class="right-block">
+                    <span class="media-content-grid-heading-big-accent">{{ block.settings.freelmo__slide2_subheading }}</span>
+                    <h3 class="media-content-grid-heading-big">{{ block.settings.freelmo__slide2_heading }}</h3>
+                    <div class="btn-wrapper center big-text-section__button-wrapper">
+                        <a href="{{ block.settings.freelmo__slide2_btn_1_link }}" class="btn"> {{ block.settings.freelmo__slide2_btn_1 }} &nbsp;<i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </swiper-slide>
+            {% endif %}
+
+          {% if block.settings.freelmo__slide3_img %}
+            <swiper-slide data-history="1">
+                <div class="left-block">
+                    <img src="{{ block.settings.freelmo__slide3_img  | img_url: '350x350' }}">
+                </div>
+                <div class="right-block">
+                    <span class="media-content-grid-heading-big-accent">{{ block.settings.freelmo__slide3_subheading }}</span>
+                    <h3 class="media-content-grid-heading-big">{{ block.settings.freelmo__slide3_heading }}</h3>
+                    <div class="btn-wrapper center big-text-section__button-wrapper">
+                        <a href="{{ block.settings.freelmo__slide3_btn_1_link }}" class="btn"> {{ block.settings.freelmo__slide3_btn_1 }} &nbsp;<i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </swiper-slide>
+          {% endif %}
+
+        </swiper-container>
+    </section>
+  
+    {% endcase %}
+{% endfor %}
+
+
+</div>
+
+
+{% schema %}
+{
+  "name": "ZHD Freelmo Sections",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "freelmo__bg-color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "freelmo__heading-color",
+      "label": "Heading Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "freelmo__sub-heading-color",
+      "label": "Sub Heading Color",
+      "default": "#eee"
+    },
+    {
+      "type": "color",
+      "id": "freelmo__btn-bg-color",
+      "label": "Button BG Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "freelmo__btn-txt-color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "freelmo__heading-size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 62
+    },
+    {
+      "type": "range",
+      "id": "freelmo__sub-heading-size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Sub Heading Font Size",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Style Desktop"
+    },
+    {
+      "type": "text",
+      "id": "freelmo__section-margin-top",
+      "label": "Margin Top",
+      "default": "-12px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "text",
+      "id": "freelmo__section-margin-bottom",
+      "label": "Margin Bottom",
+      "default": "0px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "header",
+      "content": "Style MObile"
+    },
+    {
+      "type": "text",
+      "id": "freelmo__section-margin-top-mob",
+      "label": "Margin Top",
+      "default": "-12px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "text",
+      "id": "freelmo__section-margin-bottom-mob",
+      "label": "Margin Bottom",
+      "default": "0px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "section-1",
+      "name": "Section 1",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__heading_1",
+          "label": "Heading 1",
+          "default": "What are barefoot shoes?"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content_1",
+          "label": "Content 1",
+          "default": "<p>Barefoot shoes, also known as minimalist shoes, are footwear that allows your feet to move naturally.</p>"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__video_ulr",
+          "label": "Video Link",
+          "default": "https://cdn.shopify.com/videos/c/o/v/5d4d8111dbea44a298fcf989dbf0e447.mp4"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__video_cover",
+          "label": "Video Cover Image",
+          "info": "Video Cover Image size should be 600x600"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading_2",
+          "label": "Heading 2",
+          "default": "I am a Big Heading 2"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content_2",
+          "label": "Content 2",
+          "default": "<p>I am a content 2</p>"
+        }
+      ]
+    },
+    {
+      "type": "section-2",
+      "name": "Section 2",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__subheading",
+          "label": "sub heading",
+          "default": "I am a Sub heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading",
+          "label": "Heading",
+          "default": "<p>I am the Heading</p>"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__btn_1",
+          "label": "Button 1",
+          "default": "<p>Discover Our Collections</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__btn_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__btn_2",
+          "label": "Button 2",
+          "default": "<p>Discover Our Products</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__btn_2_link",
+          "label": "Button 2 Link"
+        }
+      ]
+    },
+    {
+      "type": "section-3",
+      "name": "Section 3",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__video_ulr",
+          "label": "Video Link",
+          "default": "https://cdn.shopify.com/videos/c/o/v/5d4d8111dbea44a298fcf989dbf0e447.mp4"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__video_cover",
+          "label": "Video Cover Image",
+          "info": "Video Cover Image size should be 600x600"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__subheading",
+          "label": "Subheading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading",
+          "label": "Heading",
+          "default": "I am a Big Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content",
+          "label": "Content",
+          "default": "<p>I am a content</p>"
+        }
+      ]
+    },
+    {
+      "type": "section-4",
+      "name": "Section 4",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__subheading",
+          "label": "Sub Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading",
+          "label": "Heading",
+          "default": "I am a Big Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content",
+          "label": "Content",
+          "default": "<p>I am a content</p>"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__video_ulr",
+          "label": "Video Link",
+          "default": "https://cdn.shopify.com/videos/c/o/v/5d4d8111dbea44a298fcf989dbf0e447.mp4"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__video_cover",
+          "label": "Video Cover Image",
+          "info": "Video Cover Image size should be 600x600"
+        }
+      ]
+    },
+    {
+      "type": "section-5",
+      "name": "Section 5",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__video_ulr",
+          "label": "Video Link",
+          "default": "https://cdn.shopify.com/videos/c/o/v/5d4d8111dbea44a298fcf989dbf0e447.mp4"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__video_cover",
+          "label": "Video Cover Image",
+          "info": "Video Cover Image size should be 600x600"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content",
+          "label": "Content",
+          "default": "<p>I am a content</p>"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__subheading",
+          "label": "Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading",
+          "label": "Heading",
+          "default": "I am a Big Heading"
+        }
+      ]
+    },
+    {
+      "type": "section-6",
+      "name": "Section 6",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "freelmo__subheading",
+          "label": "Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__heading",
+          "label": "Heading",
+          "default": "I am a Big Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "freelmo__content",
+          "label": "Content",
+          "default": "<p>I am a content</p>"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__video_ulr",
+          "label": "Video Link",
+          "default": "https://cdn.shopify.com/videos/c/o/v/5d4d8111dbea44a298fcf989dbf0e447.mp4"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__video_cover",
+          "label": "Video Cover Image",
+          "info": "Video Cover Image size should be 600x600"
+        }
+      ]
+    },
+    {
+      "type": "section-7",
+      "name": "Section 7",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Slider 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__slide1_img",
+          "label": "Slider 1 Image",
+          "info": "Image size should be 350x350"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide1_subheading",
+          "label": "Sub Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide1_heading",
+          "label": "Heading",
+          "default": "I am Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide1_btn_1",
+          "label": "Button 1",
+          "default": "<p>Discover Our Collections</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide1_btn_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide1_btn_2",
+          "label": "Button 2",
+          "default": "<p>Discover Our Products</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide1_btn_2_link",
+          "label": "Button 2 Link"
+        },
+        {
+          "type": "header",
+          "content": "Slider 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__slide2_img",
+          "label": "Slider Image ",
+          "info": "Image size should be 350x350"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide2_subheading",
+          "label": "Sub Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide2_heading",
+          "label": "Heading",
+          "default": "I am Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide2_btn_1",
+          "label": "Button 1",
+          "default": "<p>Discover Our Collections</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide2_btn_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide2_btn_2",
+          "label": "Button 2",
+          "default": "<p>Discover Our Products</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide2_btn_2_link",
+          "label": "Button 2 Link"
+        },
+        {
+          "type": "header",
+          "content": "Slider 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "freelmo__slide3_img",
+          "label": "Slider Image ",
+          "info": "Image size should be 350x350"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide3_subheading",
+          "label": "Sub Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide3_heading",
+          "label": "Heading",
+          "default": "I am Heading"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide3_btn_1",
+          "label": "Button 1",
+          "default": "<p>Discover Our Collections</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide3_btn_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "freelmo__slide3_btn_2",
+          "label": "Button 2",
+          "default": "<p>Discover Our Products</p>"
+        },
+        {
+          "type": "url",
+          "id": "freelmo__slide3_btn_2_link",
+          "label": "Button 2 Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Freelmo Sections"
+    }
+  ]
+}
+{% endschema %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+<script>
+    const videos = document.querySelectorAll('video');
+
+    // Options for the Intersection Observer
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5, // When 50% of the video is visible
+    };
+
+    // Callback function for the Intersection Observer
+    const handleIntersection = (entries, observer) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          // Video is onscreen, so autoplay
+          video.play();
+        } else {
+          // Video is not onscreen, so stop
+          video.pause();
+          video.load(); // Reset the video to the beginning
+        }
+      });
+    };
+
+    // Create an Intersection Observer for each video
+    videos.forEach(video => {
+      const observer = new IntersectionObserver(handleIntersection, options);
+      observer.observe(video);
+    });
+</script>

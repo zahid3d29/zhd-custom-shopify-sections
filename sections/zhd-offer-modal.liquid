@@ -1,0 +1,159 @@
+
+{% stylesheet %}
+  
+  /* The Modal (background) */
+  .zhd-offer-modal .zhd-offer-modal {
+    display: none; 
+    position: fixed;
+    z-index: 99; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  
+  /* The Close Button */
+  .zhd-offer-modal .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .zhd-offer-modal .close:hover,
+  .zhd-offer-modal .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .zhd-offer-modal .zhd-offer-card {
+    /* box-shadow: 0 4px 8px #0003; */
+    transition: .3s;
+    width: 30%;
+    left: 30%;
+    position: absolute;
+    z-index: 99;
+  }
+  
+  .zhd-offer-modal .zhd-offer-container {
+    padding: 2px 16px;
+  }
+
+  .zhd-offer-modal .float{
+  	position:fixed;
+  	width:60px;
+  	height:60px;
+  	bottom:40px;
+  	right:10px;
+  	background-color:#0C9;
+  	color:#FFF;
+  	border-radius:50px;
+  	text-align:center;
+  	box-shadow: 2px 2px 3px #999;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+  }
+
+  .zhd-offer-modal .my-float{
+  	margin-top:22px;
+  }
+  .zhd-offer-modal .float img {
+    border-radius: 50%;
+  }
+
+  .bounce:hover {
+      animation-name: bounce;
+      animation-timing-function: ease;
+  }
+  @keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+  }
+{% endstylesheet %}
+
+<div class="zhd-offer-modal">
+  <a id="myBtn" href="#" class="float">
+    <img src="{{ section.settings.btn_img  | img_url: 'master' }}" alt="floating-button" style="width:62px">
+  </a>
+  <div id="myModal" class="zhd-offer-modal">
+    <div class="zhd-offer-card">
+      <span class="close">&times;</span>
+      <a href="{{ section.settings.modal_link }}" target="_blank">
+        <img src="{{ section.settings.modal_img  | img_url: 'master' }}" alt="Avatar" style="width:100%">
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "ZHD Offer Modal",
+  "class": "zhd__preloader",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "modal_img",
+      "label": "MOdal Image"
+    },
+    {
+      "type": "url",
+      "id": "modal_link",
+      "label": "MOdal Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "btn_img",
+      "label": "Button Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Offer Modal"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+{% javascript %}
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+{% endjavascript %}

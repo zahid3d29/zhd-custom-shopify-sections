@@ -1,0 +1,276 @@
+
+
+{%- for block in section.blocks -%}
+<style>
+    .zhd-fancy-countdown{
+      min-height: 65px;
+      height: 100%;
+      margin: auto;
+      display: block;
+      clear: both;
+      position: relative;
+      overflow: hidden;
+    }
+    .zhd-fancy-countdown .alert-bar {
+        color: #fff;
+        padding: 0px 15px;
+        position: relative;
+    } 
+    .zhd-fancy-countdown .closebtn {
+      position: absolute;
+      top: 30% !important;
+      right: 15px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      display: none;
+    }
+    .zhd-fancy-countdown .closebtn:hover {
+        color: black;
+    }
+
+    .zhd-fancy-countdown {
+        margin: 0px auto;
+        text-align: center;
+    }
+    .zhd-fancy-countdown .select-timer{
+      max-width: 767px;
+      margin: 0 auto;
+    }
+    .zhd-fancy-countdown .input-field, 
+    .zhd-fancy-countdown .select-field {
+        margin-bottom: 10px;
+        display: none; /* Hide input fields by default */
+    }
+    #selectDisabledMessage {
+        color: red;
+    }
+  
+    /* Create two equal columns that floats next to each other */
+    .zhd-fancy-countdown .ct-column-1{
+        float: left;
+        width: 60%;
+        text-align: right;
+        color: {{ block.settings.ct_content_color }};
+    }
+    
+    .zhd-fancy-countdown .ct-column-2 {
+        float: left;
+        color: {{ block.settings.ct_content_color }};
+        width: 40%;
+        text-align: left;
+        position: relative;
+        padding: 10px 50px 10px 50px;
+    }
+    .zhd-fancy-countdown .ct-column-1 h3{
+        color: {{ block.settings.ct_content_color }};
+        margin-bottom: 0;
+        line-height:1.4;
+        font-size: 18px;
+    }
+    .zhd-fancy-countdown .ct-sm_column-1,
+    .zhd-fancy-countdown .ct-sm_column-2,
+    .zhd-fancy-countdown .ct-sm_column-3{
+        float: left;
+        padding: 0px 0px;
+        color: {{ block.settings.ct_content_color }} !important;
+    }
+    
+    .zhd-fancy-countdown .ct-no {
+        display: block;
+        color: {{ block.settings.ct_content_color }} !important;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    .zhd-fancy-countdown .ct-label {
+        display: block;
+        color: {{ block.settings.ct_content_color }} !important;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    .zhd-fancy-countdown span.timer-seperator {
+        font-size: 20px;
+        color: {{ block.settings.ct_content_color }} !important;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-left: 12px;
+    }
+    #selectCountdown {
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 25px;
+    }
+    @media only screen and ( max-width: 667px ){
+      .zhd-fancy-countdown .ct-column-1 {
+          float: left;
+          width: 60%;
+          text-align: left;
+          padding: 5px 10px;
+      }
+      .zhd-fancy-countdown .ct-column-2 {
+          float: left;
+          width: 40%;
+          text-align: center;
+          position: relative;
+          padding: 10px 5px 15px 5px;
+      }
+      .zhd-fancy-countdown span.timer-seperator {
+          font-size: 10px;
+          font-weight: bold;
+          line-height: 1;
+          margin-left: 5px;
+      }
+      .zhd-fancy-countdown .alert-bar {
+          padding: 0px;
+      }
+      .zhd-fancy-countdown .ct-column-1 h3 {
+          line-height: 1.1;
+          font-size: 14px;
+      }
+      .zhd-fancy-countdown .closebtn {
+          top: 5% !important;
+          right: 5px;
+          display: none;
+      }
+    }
+</style>
+<style>
+      {%- if block.settings.sticky_enable != false -%}
+        .zhd-fancy-countdown .alert-bar-sticky {
+          position: fixed;
+          background:{{ block.settings.color_bar_bg }};
+          top:  {{ block.settings.countdoownbar_position }}px;
+          width: 100%;
+          z-index: 11;
+        }
+        @media only screen and ( max-width: 767px ){
+          .zhd-fancy-countdown .alert-bar-sticky {
+            top: {{ block.settings.countdoownbar_position_mobile }}px !important;
+          }
+        }
+      {%- endif -%}
+  </style>
+
+  <div class="zhd-fancy-countdown" id="section__{{ section.id }}" style="background:{{ block.settings.color_bar_bg }};">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';" style="color: {{ block.settings.ct_content_color }}">&times;</span> 
+    <div class="alert-bar" id="alert-bar">
+      <div class="zhd-timer-container" id="timer-container">
+        <div class="select-timer">
+            <div class="countdown-container">
+              <div class="row">
+                <div class="ct-column-1">
+                  <h3 style="color:{{ block.settings.ct_content_color }};">{{ block.settings.main_text }}</h3>
+                </div>
+                <div class="ct-column-2">
+                  <div class="row" style="color:{{ block.settings.ct_content_color }};">
+                    <div id="selectCountdown" class="countdown"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {%- assign FNtimer_text =  block.settings.timer -%}
+  {%- assign FNdate_text =   block.settings.custom_date -%}
+  {%- assign FNtimer_end =   block.settings.timer_end_text -%}
+  {%- assign FNdate_show_text2 =   block.settings.days_show_text2 -%}
+
+
+{%- endfor -%}
+
+
+
+<script> 
+  window.addEventListener('scroll', FNmyFunction2);
+  
+  var header2 = document.getElementById("alert-bar");
+  var sticky2 = header2.offsetTop;
+
+  function FNmyFunction2() {
+    if (window.pageYOffset > sticky2) {
+      header2.classList.add("alert-bar-sticky");
+    } else {
+      header2.classList.remove("alert-bar-sticky");
+    }
+  }
+</script>
+
+<script> 
+
+    // Set the date we're counting down to
+    var FNtimeEndText = `{{ FNtimer_end }}`;
+    var FNtimeCustom = `{{ FNdate_text }} {{ FNtimer_text }}`;
+  
+    var FNdateShowText2 = `{{ FNdate_show_text2 }}`;
+    var FNcountDownDate = new Date( FNtimeCustom  ).getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the FNdistance between now and the count down date
+    var FNdistance = FNcountDownDate - now;
+
+    // Time calculations for FNdays, FNhours, FNminutes and FNseconds
+    var FNdays = Math.floor(FNdistance / (1000 * 60 * 60 * 24));
+    var FNhours = Math.floor((FNdistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var FNminutes = Math.floor((FNdistance % (1000 * 60 * 60)) / (1000 * 60));
+    var FNseconds = Math.floor((FNdistance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="selectCountdown"
+    if( FNdateShowText2 == 'yes' ){
+        // document.getElementById("selectCountdown").innerHTML = FNdays + "D, " + FNhours + "H, " + FNminutes + "M, " + FNseconds + "S ";
+          document.getElementById("selectCountdown").innerHTML = `
+            <div class="ct-sm_column-1" style="width: 25%;">
+              <span class="ct-no">${FNdays}<span class="timer-seperator">:</span> </span>
+              <span class="ct-label">Day</span>
+            </div>
+            <div class="ct-sm_column-2" style="width: 25%;">
+              <span class="ct-no">${FNhours}<span class="timer-seperator">:</span> </span>
+              <span class="ct-label">Hr</span>
+            </div>
+            <div class="ct-sm_column-3" style="width: 25%;">
+              <span class="ct-no">${FNminutes}<span class="timer-seperator">:</span> </span>
+              <span class="ct-label">Min</span>
+            </div>
+            <div class="ct-sm_column-4" style="width: 25%; float:left;">
+              <span class="ct-no">${FNseconds}</span>
+              <span class="ct-label">Sec</span>
+            </div>
+          `
+    } else{
+        // document.getElementById("selectCountdown").innerHTML = FNhours + "H, " + FNminutes + "M, " + FNseconds + "S ";
+        document.getElementById("selectCountdown").innerHTML = `
+            <div class="ct-sm_column-1" style="width: 30.33%;">
+              <span class="ct-no">${FNhours}<span class="timer-seperator">:</span> </span>
+              <span class="ct-label">Hr</span>
+            </div>
+            <div class="ct-sm_column-2" style="width: 30.33%;">
+              <span class="ct-no">${FNminutes}<span class="timer-seperator">:</span> </span>
+              <span class="ct-label">Min</span>
+            </div>
+            <div class="ct-sm_column-3" style="width: 30.33%;">
+              <span class="ct-no">${FNseconds}</span>
+              <span class="ct-label">Sec</span>
+            </div>
+          `
+    }
+
+    // If the count down is over, write some text 
+    if (FNdistance < 0) {
+      clearInterval(x);
+      document.getElementById("selectCountdown").innerHTML = FNtimeEndText;
+    }
+  }, 1000);
+  
+  
+</script>

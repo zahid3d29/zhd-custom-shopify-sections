@@ -1,0 +1,117 @@
+{% stylesheet %}
+    .zhd-heading .content {
+        position: relative;
+        width: 100%;
+        height: 20rem;
+    }
+    .zhd-heading .content h2 {
+        position: absolute;
+        font-size: 10rem;
+        left: 50%;
+        top: 15%;
+        transform: translate(-50%, -50%);
+    }
+    @keyframes animate{
+        0%, 100%{
+            clip-path: polygon(58% 49%, 73% 45%, 89% 37%, 100% 25%, 100% 100%, 50% 100%, 0 100%, 0 65%, 15% 60%, 33% 55%);
+        }
+        50%{
+            clip-path: polygon(51% 57%, 76% 61%, 93% 57%, 100% 66%, 100% 100%, 50% 100%, 0 100%, 0 31%, 15% 43%, 35% 48%);
+        }
+    }
+    @media only screen and ( max-width: 1400px ){
+      .zhd-heading .content {
+          height: 14rem;
+      }
+      .zhd-heading .content h2 {
+          font-size: 6rem;
+      }
+      .zhd-heading .content h2 {
+          top: 10%;
+      }
+    }
+    @media only screen and ( max-width: 767px ){
+      .zhd-heading .content {
+          height: 7rem;
+      }
+      .zhd-heading .content h2 {
+          font-size: 4rem;
+      }
+    }
+{% endstylesheet %}
+
+
+
+<div class="zhd-heading" style="background: {{ section.settings.section_bg }};">
+  <div class="content">
+      <h2 style="color: transparent; -webkit-text-stroke: 2px {{ section.settings.heading_color }};">{{ section.settings.heading_text }}</h2>
+      <h2 style="color: {{ section.settings.animation_color }}; {% if section.settings.active_animation %}animation : animate 4s ease-in-out infinite;{% endif %}">{{ section.settings.heading_text }}</h2>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "ZHD Heading",
+  "class": "zhd__heading",
+  "settings": [
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "label": "Desktop Heading Size",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "position_top",
+      "min": 0,
+      "max": 300,
+      "step": 3,
+      "unit": "%",
+      "label": "Posittion From Top",
+      "default": 15
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "WATER EFFECT"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "animation_color",
+      "label": "Animation Color",
+      "default": "#03a9f4"
+    },
+    {
+      "type": "checkbox",
+      "id": "active_animation",
+      "default": false,
+      "label": "Active Water Effect?"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Heading"
+    }
+  ]
+}
+{% endschema %}
+

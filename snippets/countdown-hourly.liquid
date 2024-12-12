@@ -1,0 +1,216 @@
+
+<style>
+.zhd-timer-container {
+    margin: 0px auto;
+    text-align: center;
+}
+.zhd-timer-container .select-timer{
+  max-width: 767px;
+  margin: 0 auto;
+}
+.zhd-timer-container .input-field, 
+.zhd-timer-container .select-field {
+    margin-bottom: 10px;
+    display: none; /* Hide input fields by default */
+}
+#selectDisabledMessage {
+    color: red;
+}
+</style>
+
+<style>
+/* Create two equal columns that floats next to each other */
+.zhd-timer-container .ct-column-1{
+  float: left;
+  width: 60%;
+  text-align: right;
+  color: {{ section.settings.ct_content_color }};
+}
+
+.zhd-timer-container .ct-column-2 {
+    float: left;
+    color: {{ section.settings.ct_content_color }};
+    width: 40%;
+    text-align: left;
+    position: relative;
+    padding: 5px 50px 5px 50px;
+}
+.zhd-timer-container .ct-column-1 h3{
+  color: {{ section.settings.ct_content_color }};
+}
+.zhd-timer-container .ct-sm_column-1,
+.zhd-timer-container .ct-sm_column-2,
+.zhd-timer-container .ct-sm_column-3{
+  float: left;
+  width: 30.33%;
+  padding: 0px 0px;
+}
+
+.zhd-timer-container .ct-no {
+    display: block;
+    color: {{ section.settings.ct_content_color }};
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.zhd-timer-container .ct-label {
+    display: block;
+    color: {{ section.settings.ct_content_color }};
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+.zhd-timer-container span.timer-seperator {
+    font-size: 22px;
+    color: {{ section.settings.ct_content_color }};
+    font-weight: bold;
+    line-height: 1.2;
+    margin-left: 12px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and ( max-width: 667px ){
+  .zhd-timer-container .ct-column-1 {
+      float: left;
+      width: 40%;
+      text-align: left;
+      color: {{ section.settings.ct_content_color }};
+      padding: 10px 15px;
+  }
+  .zhd-timer-container .ct-column-2 {
+      float: left;
+      color: {{ section.settings.ct_content_color }};
+      width: 60%;
+      text-align: left;
+      position: relative;
+      padding: 31px 30px 10px 30px;
+  }
+  .zhd-timer-container span.timer-seperator {
+      font-size: 22px;
+      color: {{ section.settings.ct_content_color }};
+      font-weight: bold;
+      line-height: 1.2;
+      margin-left: 0px;
+  }
+}
+</style>
+
+{%- for block in section.blocks -%}
+<div class="zhd-timer-container" id="timer-container" style="background:{{ section.settings.ct_bg }};">
+    <div class="select-timer">
+        <div class="input-field">
+            <label for="inputCountdownHours">Countdown Hours:</label>
+            <input type="text" id="inputCountdownHours" value="{{ block.settings.ct_hour }}">
+        </div>
+        <div class="input-field">
+            <label for="enableCountdownTimer">Enable Timer:</label>
+            <input type="text" id="enableCountdownTimer" placeholder="true or false" value="{% if block.settings.on_off_timer %}true{% else %}false{% endif %}">
+        </div>
+        <div class="input-field">
+            <label for="inputRepeat">Repeat:</label>
+            <input type="text" id="inputRepeat" placeholder="true or false" value="{% if block.settings.rpt_timer %}true{% else %}false{% endif %}">
+        </div>
+        <div class="countdown-container">
+          <div class="row">
+            <div class="ct-column-1">
+              <h3 style="color:{{ block.settings.ct_content_color }};">{{ block.settings.ct_msg }}</h3>
+            </div>
+            <div class="ct-column-2">
+              <div class="row">
+                <div id="selectCountdown" class="countdown"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="selectDisabledMessage"></div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Script for Select Timer -->
+<script>
+    $(document).ready(function () {
+        let selectCountdownInterval;
+
+        function startSelectCountdown() {
+            const inputCountdownHours = parseInt($('#inputCountdownHours').val());
+            const inputRepeat = $('#inputRepeat').val().toLowerCase() === 'true';
+            const enableCountdownTimer = $('#enableCountdownTimer').val().toLowerCase() === 'true';
+            
+            // Use web storage to persist countdown time
+            let selectCountdownTime = localStorage.getItem('selectCountdownTime');
+            selectCountdownTime = selectCountdownTime ? parseInt(selectCountdownTime) : Date.now() + inputCountdownHours * 60 * 60 * 1000;
+
+            function updateSelectCountdown() {
+                const now = Date.now();
+                const timeDifference = selectCountdownTime - now;
+
+                if (enableCountdownTimer) {
+                    if (timeDifference > 0) {
+                        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                        {% comment %} $('#selectCountdown').html(`<p>${hours}: h ${minutes}: m ${seconds}: s</p>`); {% endcomment %}
+                        $('#selectCountdown').html(`
+                         <div class="ct-sm_column-1">
+                            <span class="ct-no">${hours} <span class="timer-seperator">:</span> </span>
+                            <span class="ct-label">Hr</span>
+                          </div>
+                          <div class="ct-sm_column-2">
+                            <span class="ct-no">${minutes}<span class="timer-seperator">:</span> </span>
+                            <span class="ct-label">Min</span>
+                          </div>
+                          <div class="ct-sm_column-3">
+                            <span class="ct-no">${seconds} </span>
+                            <span class="ct-label">Sec</span>
+                          </div>
+                        `);
+
+                    } else if (inputRepeat) {
+                        selectCountdownTime += inputCountdownHours * 60 * 60 * 1000;
+                    } else {
+                        $('#selectCountdown').html('<p>Countdown has ended.</p>');
+                        clearInterval(selectCountdownInterval);
+                    }
+                } else {
+                    // Display message when timer is disabled
+                    const disableMessage = $('#selectDisabledMessage').val();
+                    if (disableMessage) {
+                        $('#selectDisabledMessage').html(`<p>${disableMessage}</p>`);
+                    } else {
+                        $('#selectCountdown').hide();
+                        $('#selectDisabledMessage').html('<p>Timer is currently disabled.</p>');
+                    }
+                    clearInterval(selectCountdownInterval);
+                }
+            }
+
+            selectCountdownInterval = setInterval(updateSelectCountdown, 1000);
+
+            // Save countdown time to web storage
+            localStorage.setItem('selectCountdownTime', selectCountdownTime);
+        }
+
+        // Start the countdown initially
+        startSelectCountdown();
+
+        // Update countdown when input values change
+        $('#inputCountdownHours, #inputRepeat, #enableCountdownTimer').on('input', function () {
+            clearInterval(selectCountdownInterval);
+            startSelectCountdown();
+        });
+    });
+</script>

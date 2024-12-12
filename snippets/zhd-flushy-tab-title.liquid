@@ -1,0 +1,28 @@
+  <!-- Showing FLASHY META on the Browser Tab title when visitors changed Tab -->
+  <script type="text/javascript">
+      $(function(){
+        // FLASHY META
+        
+        const currentDocTitle = document.title
+        const docTitleMessage = "🥰 Come back Please!";
+        let isDocTitleMsg = false
+        let flashyMeta = false
+  
+        document.addEventListener("visibilitychange", function(){
+          if(!isDocTitleMsg){
+            isDocTitleMsg = true
+            flashyMeta = setInterval(function() {
+              document.title =  document.title == currentDocTitle ? docTitleMessage : currentDocTitle
+            },1000)
+          }else{
+            isDocTitleMsg = false
+            document.title = currentDocTitle
+            clearInterval(flashyMeta);
+          }
+        });
+        
+        qntSelectors.init()
+        FastClick.attach(document.body)
+
+      });
+  </script>

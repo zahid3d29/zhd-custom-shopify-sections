@@ -1,0 +1,639 @@
+<style>
+
+    #mob{display: none;}
+    #pc{display: block;background-color: {{ section.settings.zhdplx__bg-color }};margin-top: {{ section.settings.zhdplx__section-margin-top }};
+          margin-bottom: {{ section.settings.zhdplx__section-margin-bottom }};}
+    .zhdplx__sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        display: flex;
+    }
+    .zhdplx__column-1:before {
+        content: "";
+        width: 100%;
+        background: #2f2f2f;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 1px;
+        z-index: 99;
+    }
+    .zhdplx__column-1:after {
+        content: "";
+        height: 100%;
+        background: #585858;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        z-index: 9;
+    }
+    .zhdplx__sticky img{
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+    .zhdplx__column-1 {
+        float: left;
+        width: 50%;
+    }
+    .zhdplx__column-2 {
+        float: left;
+        width: 50%;
+    }
+    .zhdplx__row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .zhdplx__centered {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .zhdplx__centered img {
+        width: 150px;
+        border-radius: 50%;
+    }
+    h2.heading {
+        font-size: {{ section.settings.zhdplx__heading-size }}px;
+        line-height: {{ section.settings.zhdplx__heading-size }}px;
+        font-weight: bold;
+        color: {{ section.settings.zhdplx__heading-color }};
+        margin: 15px 0px;
+        text-align: left;
+    }
+     p.subheading {
+       font-size: {{ section.settings.zhdplx__sub-heading-size }}px;
+       line-height: 1.3;
+       color: {{ section.settings.zhdplx__sub-heading-color }};
+       text-align: left;
+     }
+    .zhdplx__content {
+        height: 100vh;
+        position: relative;
+    }
+    .zhdplx__button {
+        border: none;
+        color: {{ section.settings.zhdplx__btn-txt-color }};
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 22px;
+        margin: 15px 15px;
+        cursor: pointer;
+        display: block;
+        background-color: {{ section.settings.zhdplx__btn-bg-color }};
+    }
+
+  @media only screen and (min-width: 990px){
+        html,body {overflow-x: visible !important;}
+  }
+
+  @media only screen and (max-width: 1215px) {
+
+    #mob{display: none;}
+    #pc{display: block;}
+    .zhdplx__sticky img{
+        height: 80vh;
+    }
+    h2.heading {
+        font-size: 38px;
+        line-height: 1.3;
+    }
+     p.subheading {
+       font-size: 20px;
+       line-height: 1.3;
+     }
+    .zhdplx__content {
+        height: 80vh;
+    }
+    .zhdplx__button {
+        padding: 15px 15px;
+        font-size: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 989px) {
+      #pc {
+          display: none;
+      }
+      #mob {
+          display: block;
+          background-color: {{ section.settings.zhdplx__bg-color }};
+          margin-top: {{ section.settings.zhdplx__section-margin-top-mob }};
+          margin-bottom: {{ section.settings.zhdplx__section-margin-bottom-mob }};
+      }
+      h2.heading {
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 30px;
+          margin: 0 auto;
+          text-align: center;
+          margin-bottom: 10px;
+          color: {{ section.settings.zhdplx__heading-color }};
+      }
+      p.subheading {
+          font-size: 18px;
+          line-height: 1.3;
+          color: {{ section.settings.zhdplx__sub-heading-color }};
+          margin: 0 auto;
+          text-align: center;
+          margin-bottom: 15px;
+          padding: 0px 15px;
+      }
+      .zhdplx__button {
+          border: none;
+          color: {{ section.settings.zhdplx__btn-txt-color }};
+          background: {{ section.settings.zhdplx__btn-bg-color }};
+          margin: 0 auto;
+          padding: 10px 10px;
+          text-align: center;
+          display: block;
+          font-size: 20px;
+          line-height: 28px;
+          max-width: 50%;
+      }
+      .zhdplx__container {
+          padding: 1rem 3rem;
+      }
+      .zhdplx__projects__item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .zhdplx__projects__item-bg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+      }
+      .zhdplx__projects__item-bg img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(50%);
+      }
+      .zhdplx__projects__item-link {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          text-decoration: none;
+          font-size: 4rem;
+          color: white;
+          font-weight: 900;
+          text-transform: uppercase;
+      }
+      .projects__nav {
+          display: none;
+      }
+      .zhdplx__projects__item-link span[data-index] {
+          opacity: 0;
+          display: inline-block;
+          will-change: transform;
+          transform: translate3d(0.5rem, 0.5rem, 0);
+          transition: 0.5s ease-in-out;
+          transition-delay: calc(0.03s * var(--coeff));
+      }
+      .zhdplx__projects__item-link.reveal span[data-index] {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+      }
+      [data-gallery] {
+          position: relative;
+      }
+      [data-gallery-item] {
+          position: relative;
+          height:80vh;
+          overflow: hidden;
+      }
+  }
+</style>
+
+<div class="zhd-parallax-section" id="pc">
+  <div class="zhdplx__row">
+    <div class="zhdplx__column-1" style="position: relative;">
+      {% for block in section.blocks %}
+        <div class="zhdplx__content">
+          <div class="zhdplx__centered">
+            <h2 class="heading">{{ block.settings.zhdplx__heading }}</h2>
+            <p class="subheading">{{ block.settings['zhdplx__sub-heading'] }}</p>
+            {% if block.settings['zhdplx__btn-txt'] != blank %}
+              <a href="{{ block.settings.zhdplx__btn-link }}" class="zhdplx__button">
+                {{- block.settings['zhdplx__btn-txt'] -}}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="zhdplx__column-2" style="position: relative;">
+      {% for block in section.blocks %}
+        <div class="zhdplx__sticky">
+          <img src="{{ block.settings.zhdplx__img | img_url: 'master' }}" alt="image">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+   
+<div class="zhd-parallax-section" id="mob">
+  <div class="projects" data-gallery>
+    {%- for block in section.blocks -%}
+      <div class="zhdplx__projects__item" data-gallery-item data-image="{{ block.settings.zhdplx__img | img_url: 'master' }}">
+          <div class="zhdplx__projects__item-bg">
+            <img src="{{ block.settings.zhdplx__img | img_url: 'master' }}">
+          </div>
+      </div>
+      <div class="zhdplx__container">
+          <h2 class="heading">{{ block.settings.zhdplx__heading }}</h2>
+          <p class="subheading">{{ block.settings['zhdplx__sub-heading'] }}</p>
+          {% if block.settings['zhdplx__btn-txt'] != blank %}
+            <a href="{{ block.settings.zhdplx__btn-link }}" class="zhdplx__button">
+              {{ block.settings['zhdplx__btn-txt'] }}
+            </a>
+          {% endif %}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZHD Parallax Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "zhdplx__bg-color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "zhdplx__heading-color",
+      "label": "Heading Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "zhdplx__sub-heading-color",
+      "label": "Sub Heading Color",
+      "default": "#eee"
+    },
+    {
+      "type": "color",
+      "id": "zhdplx__btn-bg-color",
+      "label": "Button BG Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "zhdplx__btn-txt-color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "zhdplx__heading-size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 62
+    },
+    {
+      "type": "range",
+      "id": "zhdplx__sub-heading-size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Sub Heading Font Size",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Style Desktop"
+    },
+    {
+      "type": "text",
+      "id": "zhdplx__section-margin-top",
+      "label": "Margin Top",
+      "default": "-12px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "text",
+      "id": "zhdplx__section-margin-bottom",
+      "label": "Margin Bottom",
+      "default": "0px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "header",
+      "content": "Style MObile"
+    },
+    {
+      "type": "text",
+      "id": "zhdplx__section-margin-top-mob",
+      "label": "Margin Top",
+      "default": "-12px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    },
+    {
+      "type": "text",
+      "id": "zhdplx__section-margin-bottom-mob",
+      "label": "Margin Bottom",
+      "default": "0px",
+      "info": "You can set margin ex: 30px, For negative margin set ex: -30px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "parallax-block",
+      "name": "Parallax Block",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "zhdplx__img",
+          "label": "Image",
+          "info": "Image diemention should be 1500x1500 or Upper"
+        },
+        {
+          "type": "text",
+          "id": "zhdplx__heading",
+          "label": "Heading",
+          "default": "I am a Big Heading"
+        },
+        {
+          "type": "text",
+          "id": "zhdplx__sub-heading",
+          "label": "Sub Heading",
+          "default": "I am a Sub Heading"
+        },
+        {
+          "type": "text",
+          "id": "zhdplx__btn-txt",
+          "label": "Button Text",
+          "default": "Click Me!"
+        },
+        {
+          "type": "url",
+          "id": "zhdplx__btn-link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Parallax Section"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+        class GalleryZHDPLX {
+          /**
+           * @type {HTMLElement}
+           */
+          zhdplx__container;
+        
+          items = [];
+        
+          /**
+           * @type {DOMRect}
+           */
+          rect;
+        
+          /**
+           * @type {HTMLElement}
+           */
+          navigation;
+        
+          interpolatedProgress = 0;
+        
+          isInViewPort = false;
+          isInViewPortFull = false;
+        
+          /**
+           * 
+           * @param {HTMLElement} zhdplx__container 
+           * @returns 
+           */
+          constructor(zhdplx__container) {
+            if (!zhdplx__container) {
+              return
+            }
+        
+            this.zhdplx__container = zhdplx__container;
+            this.fillItems();
+            this.buildNavigation();
+            this.loop();
+          }
+        
+          update() {
+            this.handleNavigation();
+            this.handleItemParallax();
+            this.handleTitles();
+          }
+        
+          handleNavigation() {
+            if (this.isInViewPortFull) {
+              this.navigation.classList.add('active');
+            } else {
+              this.navigation.classList.remove('active');
+            }
+        
+            this.interpolatedProgress = -this.interpolation(this.rect.top, 0, this.rect.height 
+              - window.innerHeight, 0, 100 * (this.items.length - 1));
+        
+            if (this.interpolatedProgress < 0) {
+              this.interpolatedProgress = 0;
+            }
+        
+            if (this.interpolatedProgress > this.rect.height - window.innerHeight) {
+              this.interpolatedProgress = this.rect.height - window.innerHeight;
+            }
+        
+            const frame = this.navigation.querySelector('.projects__nav-frame');
+        
+            frame.style.transform = `translate3d(${this.interpolatedProgress}%, 0, 0)`;
+          }
+        
+          handleItemParallax() {
+            this.items.forEach(item => {
+              if (!item.isInViewPort) {
+                return;
+              }
+        
+              item.progress = this.interpolation(item.rect.top, 0, item.rect.height, 0, -50);
+              const image = item.el.querySelector('img');
+        
+              image.style.transform = `translate3d(0, ${item.progress}%, 0)`;
+            });
+          }
+        
+          handleTitles() {
+            this.items.forEach(item => {
+              if (!item.prepared) {
+                this.prepareTitle(item);
+                return
+              }
+              if (!item.isInViewPort) {
+                return;
+              }
+        
+              const text = item.el.querySelector('.zhdplx__projects__item-link');
+              text.style.transform = `translate3d(0, ${item.progress * 5}px, 0)`;
+        
+              if (Math.abs(item.progress) >= 20) {
+                this.hideTitle(text);
+              } else {
+                this.revealTitle(text);
+              }
+            });
+          }
+        
+          getRect() {
+            this.rect = this.zhdplx__container.getBoundingClientRect();
+          }
+        
+          checkViewPort() {
+            this.isInViewPort = this.rect.top < window.innerHeight
+              && this.rect.top + this.rect.height > 0;
+        
+            this.isInViewPortFull = this.rect.top <= 1
+              && this.rect.top + this.rect.height >= window.innerHeight;
+        
+            if (!this.isInViewPort) {
+              return;
+            }
+        
+            this.items.forEach(item => {
+              item.rect = item.el.getBoundingClientRect();
+              item.isInViewPort = item.rect.top <= window.innerHeight
+                && item.rect.top + item.rect.height >= 0;
+            });
+          }
+        
+          loop() {
+            this.getRect();
+            this.checkViewPort();
+        
+            if (this.isInViewPort) {
+              this.update();
+            }
+            requestAnimationFrame(this.loop.bind(this));
+          }
+        
+          fillItems() {
+            const items = this.zhdplx__container.querySelectorAll('[data-gallery-item]');
+        
+            items.forEach((el, ind) => {
+              this.items.push({
+                index: ind,
+                el: el,
+                isInViewPort: false,
+                rect: null,
+                progress: 0,
+                title: el.querySelector('.zhdplx__projects__item-link')?.textContent,
+              });
+            });
+          }
+        
+          buildNavigation() {
+            const navEl = document.createElement('div');
+            navEl.classList.add('projects__nav');
+        
+            navEl.innerHTML = `
+              <div class="projects__nav-frame"></div>
+            `;
+        
+            this.items.forEach(item => {
+              const el = document.createElement('div');
+              el.classList.add('projects__nav-item');
+              el.dataset.index = item.index;
+              el.title = item.title;
+              el.innerHTML = `<img src="${item.el.dataset.image}" alt="">`;
+              navEl.append(el);
+        
+              el.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.onNavItemClick(item);
+              });
+            });
+        
+            this.navigation = navEl;
+            this.zhdplx__container.append(navEl);
+          }
+            
+          prepareTitle(item) {
+            const text = item.el.querySelector('.zhdplx__projects__item-link');
+        
+            if (!text) {
+              return;
+            }
+        
+            item.prepared = true;
+        
+            let spanCount = 0;
+        
+            const words = text.textContent.trim().split(' ');
+        
+            text.innerHTML = '';
+        
+            words.forEach(word => {
+              const wordEl = document.createElement('span');
+        
+              const letters = word.split('');
+        
+              letters.forEach(letter => {
+                const span = document.createElement('span');
+                span.innerHTML = letter;
+                span.dataset.index = spanCount;
+                span.setAttribute('style', `--coeff:${spanCount}`);
+                wordEl.append(span);
+                spanCount += 1;
+              });
+        
+              const span = document.createElement('span');
+              span.innerHTML = ' ';
+              wordEl.append(span);
+        
+              text.append(wordEl);
+            });
+        
+          }
+        
+          interpolation(value, min, max, newMin, newMax) {
+            let newValue = ((value - min) / (max - min)) * (newMax - newMin) + newMin;
+            return newValue;
+          }
+        };
+        
+        const initGalleryZHDPLX = () => {
+          Array.from(document.querySelectorAll('[data-gallery]')).forEach(el => {
+            new GalleryZHDPLX(el);
+          });
+        };
+        
+        initGalleryZHDPLX();
+
+</script>
+

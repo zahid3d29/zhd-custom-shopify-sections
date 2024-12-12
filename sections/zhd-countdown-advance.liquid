@@ -1,0 +1,153 @@
+{% comment %}
+{% render "countdown-hourly" %}
+{% render "countdown-timezone" %}
+{% endcomment %}
+
+{% render "countdown-hourly" %}
+
+{% schema %}
+{
+  "name": "ZHD Countdown Advance",
+  "class": "zhd__countdownbar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ct_msg",
+      "label": "Countdown Message",
+      "default": "Last Chance for Black Friday Sell"
+    },
+    {
+      "type": "text",
+      "id": "ct_hour",
+      "label": "Countdown Hour?",
+      "default": "1 hours"
+    },
+    {
+      "type": "checkbox",
+      "id": "on_off_timer",
+      "label": "Enable/Disable?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "rpt_timer",
+      "label": "Repeat Timer?",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "ct_bg",
+      "label": "Background",
+      "default": "#e91e63"
+    },
+    {
+      "type": "color",
+      "id": "ct_content_color",
+      "label": "Content Color",
+      "default": "#fff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZHD Countdown Advance"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Script for Select Timer -->
+<script>
+    $(document).ready(function () {
+        let selectCountdownInterval;
+
+        function startSelectCountdown() {
+            const inputCountdownHours = parseInt($('#inputCountdownHours').val());
+            const inputRepeat = $('#inputRepeat').val().toLowerCase() === 'true';
+            const enableCountdownTimer = $('#enableCountdownTimer').val().toLowerCase() === 'true';
+            
+            // Use web storage to persist countdown time
+            let selectCountdownTime = localStorage.getItem('selectCountdownTime');
+            selectCountdownTime = selectCountdownTime ? parseInt(selectCountdownTime) : Date.now() + inputCountdownHours * 60 * 60 * 1000;
+
+            function updateSelectCountdown() {
+                const now = Date.now();
+                const timeDifference = selectCountdownTime - now;
+
+                if (enableCountdownTimer) {
+                    if (timeDifference > 0) {
+                        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                        {% comment %} $('#selectCountdown').html(`<p>${hours}: h ${minutes}: m ${seconds}: s</p>`); {% endcomment %}
+                        $('#selectCountdown').html(`
+                         <div class="ct-sm_column-1">
+                            <span class="ct-no">${hours} <span class="timer-seperator">:</span> </span>
+                            <span class="ct-label">Hr</span>
+                          </div>
+                          <div class="ct-sm_column-2">
+                            <span class="ct-no">${minutes}<span class="timer-seperator">:</span> </span>
+                            <span class="ct-label">Min</span>
+                          </div>
+                          <div class="ct-sm_column-3">
+                            <span class="ct-no">${seconds} </span>
+                            <span class="ct-label">Sec</span>
+                          </div>
+                        `);
+
+                    } else if (inputRepeat) {
+                        selectCountdownTime += inputCountdownHours * 60 * 60 * 1000;
+                    } else {
+                        $('#selectCountdown').html('<p>Countdown has ended.</p>');
+                        clearInterval(selectCountdownInterval);
+                    }
+                } else {
+                    // Display message when timer is disabled
+                    const disableMessage = $('#selectDisabledMessage').val();
+                    if (disableMessage) {
+                        $('#selectDisabledMessage').html(`<p>${disableMessage}</p>`);
+                    } else {
+                        $('#selectCountdown').hide();
+                        $('#selectDisabledMessage').html('<p>Timer is currently disabled.</p>');
+                    }
+                    clearInterval(selectCountdownInterval);
+                }
+            }
+
+            selectCountdownInterval = setInterval(updateSelectCountdown, 1000);
+
+            // Save countdown time to web storage
+            localStorage.setItem('selectCountdownTime', selectCountdownTime);
+        }
+
+        // Start the countdown initially
+        startSelectCountdown();
+
+        // Update countdown when input values change
+        $('#inputCountdownHours, #inputRepeat, #enableCountdownTimer').on('input', function () {
+            clearInterval(selectCountdownInterval);
+            startSelectCountdown();
+        });
+    });
+</script>
+
+
+<script>
+window.onscroll = function() {fntimersticky()};
+
+var timerContainer = document.getElementById("timer-container");
+var timersticky = timerContainer.offsetTop;
+
+function fntimersticky() {
+  if (window.pageYOffset >= timersticky) {
+    timerContainer.classList.add("timersticky")
+  } else {
+    timerContainer.classList.remove("timersticky");
+  }
+}
+</script>

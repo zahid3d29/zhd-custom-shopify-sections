@@ -1,0 +1,104 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+      {% when 'fancy-countdown' %}
+          {% render "zhd-fancy-countdown" %}
+  {%- endcase -%}
+{%- endfor -%}
+
+  
+  {% schema %}
+    {
+      "name": "ZHD Fancy Countdown bar",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "fancy-countdown",
+          "name": "fancy-countdown",
+          "limit": 1,
+          "settings": [
+              {
+                "type": "color",
+                "id": "color_bar_bg",
+                "label": "Background color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "color",
+                "id": "ct_content_color",
+                "label": "Content color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "text",
+                "id": "main_text",
+                "default": "Welcome to our store",
+                "label": "Main Text"
+              },
+              {
+                "type": "checkbox",
+                "id": "sticky_enable",
+                "label": "Sticky countdown Bar?",
+                "default": false
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Countdoownbar Sticky Position",
+                "default": 10
+              },
+              {
+                "type": "range",
+                "id": "countdoownbar_position_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Countdoownbar Sticky Position Mobile",
+                "default": 10
+              },
+              {
+                "type": "text",
+                "id": "days_show_text2",
+                "label": "Show Days?",
+                "default": "yes",
+                "info": "write 'yes' to show or 'no' to hide 'Days' on countdown. Only capital letter allowed!"
+              },
+              {
+                "type": "text",
+                "id": "custom_date",
+                "label": "Date",
+                "default": "Dec 23, 204" 
+              },
+              {
+                "type": "text",
+                "id": "timer",
+                "label": "Timer",
+                "default": "23:59:59"
+              },
+              {
+                "type": "text",
+                "id": "timer_end_text",
+                "label": "Offer end Text",
+                "default": "Expired!"
+              }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "ZHD Fancy Countdown bar",
+          "category": "ZHD Sections",
+          "blocks": [
+            {
+              "type": "fancy-countdown"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+

@@ -1,0 +1,173 @@
+
+<style>
+.timer-container {
+    margin: 0px auto;
+    text-align: center;
+}
+.select-timer{
+  max-width: 767px;
+  margin: 0 auto;
+}
+.input-field, .select-field {
+    margin-bottom: 10px;
+    display: none; /* Hide input fields by default */
+}
+#selectDisabledMessage {
+    color: red;
+}
+</style>
+<style>
+.timersticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+</style>
+<style>
+/* Create two equal columns that floats next to each other */
+.ct-column-1{
+  float: left;
+  width: 60%;
+  text-align: right;
+  color: {{ section.settings.ct_content_color }};
+}
+
+.ct-column-2 {
+    float: left;
+    color: {{ section.settings.ct_content_color }};
+    width: 40%;
+    text-align: left;
+    position: relative;
+    padding: 5px 50px 5px 50px;
+}
+.ct-column-1 h3{
+  color: {{ section.settings.ct_content_color }};
+}
+.ct-sm_column-1,
+.ct-sm_column-2,
+.ct-sm_column-3{
+  float: left;
+  width: 30.33%;
+  padding: 0px 0px;
+}
+
+.ct-no {
+    display: block;
+    color: {{ section.settings.ct_content_color }};
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.ct-label {
+    display: block;
+    color: {{ section.settings.ct_content_color }};
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+span.timer-seperator {
+    font-size: 22px;
+    color: {{ section.settings.ct_content_color }};
+    font-weight: bold;
+    line-height: 1.2;
+    margin-left: 12px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and ( max-width: 667px ){
+  .ct-column-1 {
+      float: left;
+      width: 100%;
+      text-align: center;
+      color: {{ section.settings.ct_content_color }};
+  }
+  .ct-column-2 {
+      float: left;
+      color: {{ section.settings.ct_content_color }};
+      width: 100%;
+      text-align: center;
+      position: relative;
+      padding: 0px 60px 10px 60px;
+  }
+  span.timer-seperator {
+      font-size: 22px;
+      color: {{ section.settings.ct_content_color }};
+      font-weight: bold;
+      line-height: 1.2;
+      margin-left: 0px;
+  }
+}
+</style>
+<div class="timer-container" id="timer-container" style="background:{{ section.settings.ct_bg }};">
+    <div class="select-timer">
+        <div class="input-field">
+            <label for="inputCountdownHours">Countdown Hours:</label>
+            <input type="text" id="inputCountdownHours" value="{{ section.settings.ct_hour }}">
+        </div>
+        <div class="input-field">
+            <label for="enableCountdownTimer">Enable Timer:</label>
+            <input type="text" id="enableCountdownTimer" placeholder="true or false" value="{% if section.settings.on_off_timer %}true{% else %}false{% endif %}">
+        </div>
+        <div class="input-field">
+            <label for="inputRepeat">Repeat:</label>
+            <input type="text" id="inputRepeat" placeholder="true or false" value="{% if section.settings.rpt_timer %}true{% else %}false{% endif %}">
+        </div>
+        <div class="countdown-container">
+          <div class="row">
+            <div class="ct-column-1">
+              <h3 style="color:{{ section.settings.ct_content_color }};">{{ section.settings.ct_msg }}</h3>
+            </div>
+            <div class="ct-column-2">
+              <div class="row">
+                <p id="demo"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="selectDisabledMessage"></div>
+    </div>
+</div>
+
+
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Dec 31, 2023 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+

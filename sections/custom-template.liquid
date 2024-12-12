@@ -1,0 +1,249 @@
+
+<style>
+
+  .dimond__bri-collection-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{  section.settings.zhdct__hearo-img | image_url: width: '1200' }}");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .dimond__bri-collection-hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  .dimond__bri-collection-hero-text button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .dimond__bri-collection-hero-text button:hover {
+    background-color: #555;
+    color: white;
+  }
+</style>
+
+<style>
+    .dimond__bri-collection-product-grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      padding: 10px;
+    }
+    .dimond__bri-collection-product-grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      font-size: 30px;
+      text-align: center;
+    }
+    @media only screen and ( max-width: 767px){
+      .dimond__bri-collection-product-grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+    }
+</style>
+
+<style>
+  .dimond__bri-collection-product-card {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .dimond__bri-collection-product-price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .dimond__bri-collection-product-card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .dimond__bri-collection-product-card button:hover {
+    opacity: 0.7;
+  }
+</style>
+
+<!-- zhd custom css   -->
+<style>
+  .dimond__bri-collection-tabs-bar.w3-black {
+      display: flex;
+      margin: 0 auto;
+      flex-direction: row;
+      justify-content: center;
+      padding: 3rem 1rem;
+  }
+
+  button.dimond__bri-collection-tabs-bar-item.w3-button {
+      border: none;
+      margin: 1rem;
+      cursor: pointer;
+      background: radial-gradient(#f3d3d3, transparent);
+  }
+
+  .dimond__bri-collection-tabs-container {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+  }
+</style>
+
+
+<style>
+  .product_img {
+
+    transition: transform .2s; /* Animation */
+
+  }
+  
+  .product_img:hover {
+    transform: scale(1.1); 
+  }
+  </style>
+
+
+    <div class="dimond__bri-collection-hero">
+      <div class="dimond__bri-collection-hero-text">
+        <h1>{{ section.settings.zhdct__heading }}</h1>
+        {{ section.settings.zhdct__sub-heading }}
+      </div>
+    </div>
+  
+  
+    
+    <div class="dimond__bri-collection-tabs-bar w3-black">
+      {%- for block in section.blocks -%}
+      <button class="dimond__bri-collection-tabs-bar-item w3-button" onclick="openCity('{{ block.settings.zhdct__tab-title | replace: " ", "-" }}')">
+        <img src="{{  block.settings.zhdct__tabimg | image_url: width: '110' }}" alt="">
+        <h4 class="tab-title" style="font-size: 12px;">
+          {{ block.settings.zhdct__tab-title }}
+        </h4>
+      </button>
+      {%- endfor -%}
+    </div>
+  
+    
+  
+    <div class="dimond__bri-collection-tabs-container">
+      <h3>ALL ETERNITY RINGS</h3>
+    </div>
+  
+   {%- for block in section.blocks -%}
+    <div id="{{ block.settings.zhdct__tab-title | replace: " ", "-" }}" class="dimond__bri-collection-tabs-container city">
+      <div class="dimond__bri-collection-product-grid-container">
+        {% if block.settings.collection != blank %}
+        {% assign my_collection = collections[block.settings.collection] %}
+          {%- for product in my_collection.products %}
+            <div class="dimond__bri-collection-product-grid-item">
+                <div class="dimond__bri-collection-product-card">
+                    <img class="product_img" src="{{  product.featured_image | image_url: width: 'master' }}" alt="Denim Jeans" style="width:100%">
+                    <h4 style="font-size: 18px; margin-bottom: 0;">
+                        {{- product.title | link_to: product.url }}
+                    </h4>
+                    <p class="from" style="font-size: 10px;">From</p>
+                    <p class="dimond__bri-collection-product-price" style="font-size: 14px;margin-top: 0;">{{ product.price | money }}</p>
+                </div>
+            </div>
+          {% endfor %} 
+        {% endif %}  
+
+
+
+        
+      </div>
+    </div>
+    {%- endfor -%}
+
+
+  
+
+
+  {% schema %}
+    {
+      "name": "zhd custom template",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "zhdct__hearo-img",
+          "label": "Hero Image",
+          "info": "Header Hero background Image"
+        },
+        {
+          "type": "text",
+          "id": "zhdct__heading",
+          "label": "Hero Heading",
+          "default": "PLAIN WEDDING RINGS FOR WOMEN"
+        },
+        {
+          "type": "richtext",
+          "id": "zhdct__sub-heading",
+          "label": "Hero Sub Heading",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "tab-img",
+          "name": "Tab Image",
+          "limit": 5,
+          "settings": [
+            {
+              "type": "collection",
+              "id": "collection",
+              "label": "Collection"
+            },
+            {
+              "type": "image_picker",
+              "id": "zhdct__tabimg",
+              "label": "Tan Image",
+              "info": "Tab Image dimension should be 110x110"
+            },
+            {
+              "type": "text",
+              "id": "zhdct__tab-title",
+              "label": "Heading",
+              "default": "I am a Big Heading"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "zhd custom template"
+        }
+      ]
+    }
+  {% endschema %}
+
+
+  <script>
+    function openCity(cityName) {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+        }
+        document.getElementById(cityName).style.display = "flex";  
+    }
+  </script>
